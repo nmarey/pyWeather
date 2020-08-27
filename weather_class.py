@@ -83,7 +83,8 @@ class weather:
             if i == 1:
                 stadium_weather_copy_df['Date'][(date_row_num['row_num'][1-1]-1):date_row_num['row_num'][1]].fillna(dates_df['Date'][i-1], inplace = True)
             if i == 2:
-                stadium_weather_copy_df['Date'][date_row_num['row_num'][(2-1)]:date_row_num['row_num'][2]].fillna(dates_df['Date'][i-1], inplace = True)
+                if date_row_num['row_num'][1] != 24:
+                    stadium_weather_copy_df['Date'][date_row_num['row_num'][(2-1)]:date_row_num['row_num'][2]].fillna(dates_df['Date'][i-1], inplace = True)
 
         # Replace other NaN with '--'
         stadium_weather_copy_df.fillna('--', inplace = True)
